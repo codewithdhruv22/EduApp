@@ -1,5 +1,6 @@
 import 'package:edu/color.dart';
 import 'package:edu/view/auth/login.dart';
+import 'package:edu/view/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -13,20 +14,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-          SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-  statusBarColor: primaryColor
-));
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: primaryColor));
     return MaterialApp(
-
-
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-fontFamily: 'Poppins',
+        fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: homeScreen(),
     );
   }
 }
-
