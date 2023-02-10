@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "997694521134",
+    "firebase_url": "https://eduapp-fdfb1-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "eduapp-fdfb1",
+    "storage_bucket": "eduapp-fdfb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997694521134:android:e8a2e3ef8cef98498704bf",
+        "android_client_info": {
+          "package_name": "com.example.edu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997694521134-68qalsk5vga3kmd89duhr0dmhsehcl1u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.edu",
+            "certificate_hash": "25d7eb84d74b8a48e7ff625ec8305cdb2fb04e5b"
+          }
+        },
+        {
+          "client_id": "997694521134-mcc0io3kkvo4tn3sbk7gm8f5fv6jcub8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYZ1B3fLbMXIWLcjP6POazdAuf6CeyfeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997694521134-mcc0io3kkvo4tn3sbk7gm8f5fv6jcub8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

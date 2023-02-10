@@ -1,10 +1,15 @@
 import 'package:edu/color.dart';
+import 'package:edu/controller/loginController.dart';
+import 'package:edu/view/auth/otp_verify.dart';
 import 'package:edu/widgets/btn.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../widgets/progress_dialog.dart';
+
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+  TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +55,10 @@ class LoginScreen extends StatelessWidget {
           Container(
               margin: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               child: TextFormField(
+                controller: phoneController,
+                textInputAction: TextInputAction.send,
+                keyboardType: TextInputType.number,
+                autofocus: true,
                 decoration: const InputDecoration(
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 0, horizontal: 15),
@@ -63,6 +72,15 @@ class LoginScreen extends StatelessWidget {
           btn(
               title: "Send OTP",
               operation: () {
+                      showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (BuildContext c) {
+                    return ProgressDialog(
+                      message: "Sending OTP....",
+                    );
+                  });
+                LoginController.verifyPhoneNumber("+91${phoneController.text.trim()}", context);
                 print("HELLO");
               },
               width: 140,

@@ -1,12 +1,23 @@
 import 'package:edu/color.dart';
+import 'package:edu/view/homeScreen.dart';
 import 'package:edu/widgets/btn.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
+import '../../controller/userController.dart';
+
 class ProfileCreate extends StatelessWidget {
-  const ProfileCreate({super.key});
+  String phoneNumber;
+  ProfileCreate({super.key, required this.phoneNumber});
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController stateController = TextEditingController();
+  TextEditingController pinCodeController = TextEditingController();
+  TextEditingController referalCodeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -96,11 +107,12 @@ class ProfileCreate extends StatelessWidget {
               child: Column(
                 children: [
                   TextFormField(
+                    controller: nameController,
                     decoration: const InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                       labelStyle: TextStyle(fontSize: 14),
-                      labelText: 'First Name',
+                      labelText: 'Your Name',
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white70)),
                     ),
@@ -109,11 +121,12 @@ class ProfileCreate extends StatelessWidget {
                     height: 15,
                   ),
                   TextFormField(
+                    controller: emailController,
                     decoration: const InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                       labelStyle: TextStyle(fontSize: 14),
-                      labelText: 'Last Name',
+                      labelText: 'Your Email Address',
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white70)),
                     ),
@@ -122,6 +135,7 @@ class ProfileCreate extends StatelessWidget {
                     height: 15,
                   ),
                   TextFormField(
+                    controller: cityController,
                     decoration: const InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 0, horizontal: 10),
@@ -138,11 +152,12 @@ class ProfileCreate extends StatelessWidget {
                     children: [
                       Expanded(
                         child: TextFormField(
+                          controller: stateController,
                           decoration: const InputDecoration(
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 0, horizontal: 10),
                             labelStyle: TextStyle(fontSize: 14),
-                            labelText: 'Last Name',
+                            labelText: 'State',
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white70)),
                           ),
@@ -153,11 +168,12 @@ class ProfileCreate extends StatelessWidget {
                       ),
                       Expanded(
                         child: TextFormField(
+                          controller: pinCodeController,
                           decoration: const InputDecoration(
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 0, horizontal: 10),
                             labelStyle: TextStyle(fontSize: 14),
-                            labelText: 'Last Name',
+                            labelText: 'Postal Code',
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white70)),
                           ),
@@ -169,11 +185,12 @@ class ProfileCreate extends StatelessWidget {
                     height: 15,
                   ),
                   TextFormField(
+                    controller: referalCodeController,
                     decoration: const InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                       labelStyle: TextStyle(fontSize: 14),
-                      labelText: 'Email',
+                      labelText: 'Referral Code',
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white70)),
                     ),
@@ -184,7 +201,22 @@ class ProfileCreate extends StatelessWidget {
                   btn(
                       title: "Create Profile",
                       operation: () {
-                        print("HELLO");
+                        UserController.createAccount(
+                            name: nameController.text,
+                            phoneNumber: phoneNumber,
+                            email: emailController.text,
+                            picUrl:
+                                "https://www.seekpng.com/png/detail/115-1150622_avatar-demo2x-man-avatar-icon-png.png",
+                            buyCourseId: [],
+                            city: cityController.text,
+                            state: stateController.text,
+                            postalCode: pinCodeController.text,
+                            refferalCode: referalCodeController.text);
+
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => homeScreen()));
                       },
                       width: 115,
                       height: 15),

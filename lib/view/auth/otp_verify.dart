@@ -1,13 +1,18 @@
 import 'package:edu/color.dart';
+import 'package:edu/controller/loginController.dart';
 import 'package:edu/widgets/btn.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
-class OtpVerify extends StatelessWidget {
-  const OtpVerify({super.key});
+import '../../global.dart';
+import '../widgets/progress_dialog.dart';
 
+class OtpVerify extends StatelessWidget {
+  OtpVerify({super.key, required this.phoneNumber});
+  String phoneNumber;
   @override
   Widget build(BuildContext context) {
     OtpFieldController otpController = OtpFieldController();
@@ -82,7 +87,8 @@ class OtpVerify extends StatelessWidget {
                             ),
                             Text(
                               "We have sent you otp on your phone number",
-                              style: TextStyle(color: Colors.white),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 11),
                             )
                           ],
                         )
@@ -97,7 +103,7 @@ class OtpVerify extends StatelessWidget {
                 children: [
                   OTPTextField(
                       controller: otpController,
-                      length: 5,
+                      length: 6,
                       width: MediaQuery.of(context).size.width,
                       textFieldAlignment: MainAxisAlignment.spaceAround,
                       fieldWidth: 45,
@@ -109,6 +115,19 @@ class OtpVerify extends StatelessWidget {
                       },
                       onCompleted: (pin) {
                         print("Completed: " + pin);
+                        showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (BuildContext c) {
+                              return ProgressDialog(
+                                message: "Verifying OTP....",
+                              );
+                            });
+                        AuthCredential phoneAuthCredential =
+                            PhoneAuthProvider.credential(
+                                verificationId: verificationID, smsCode: pin);
+                        LoginController.signInWithPhoneAuthCred(
+                            phoneAuthCredential, context, phoneNumber);
                       }),
                   SizedBox(
                     height: 20,
