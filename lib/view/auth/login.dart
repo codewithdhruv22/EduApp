@@ -71,16 +71,18 @@ class LoginScreen extends StatelessWidget {
               )),
           btn(
               title: "Send OTP",
-              operation: () {
-                      showDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (BuildContext c) {
-                    return ProgressDialog(
-                      message: "Sending OTP....",
-                    );
-                  });
-                LoginController.verifyPhoneNumber("+91${phoneController.text.trim()}", context);
+              operation: () async {
+                showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext c) {
+                      return ProgressDialog(
+                        message: "Sending OTP....",
+                      );
+                    });
+                LoginController.verifyPhoneNumber(
+                    "+91${phoneController.text.trim()}", context);
+                Navigator.pop(context);
                 print("HELLO");
               },
               width: 140,
