@@ -1,10 +1,8 @@
 import 'package:edu/color.dart';
 import 'package:edu/controller/loginController.dart';
-import 'package:edu/view/auth/otp_verify.dart';
 import 'package:edu/widgets/btn.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-
 import '../widgets/progress_dialog.dart';
 
 class LoginScreen extends StatelessWidget {
