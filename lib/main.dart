@@ -5,6 +5,7 @@ import 'package:edu/view/auth/login.dart';
 import 'package:edu/view/auth/otp_verify.dart';
 import 'package:edu/view/auth/profile_create.dart';
 import 'package:edu/view/courseDetail.dart';
+import 'package:edu/view/custom_player.dart';
 import 'package:edu/view/homeScreen.dart';
 import 'package:edu/view/mainScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -57,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      home: isLoggedIn ? MainScreen() : LoginScreen(),
+      home: isLoggedIn ? CustomPlayer() : LoginScreen(),
     );
   }
 }

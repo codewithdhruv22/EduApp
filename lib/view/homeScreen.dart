@@ -317,8 +317,7 @@ class homeScreen extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => CourseDetail(
-                                              courseID: "RandomlyGenID")));
+                                          builder: (context) => CourseDetail()));
                                 });
                           }),
                     )
